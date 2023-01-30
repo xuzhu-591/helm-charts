@@ -3251,5 +3251,13 @@ tektonci-resources:
   auth:
     dockerConfigJson: {    "auths":    {        "harbor.horizoncd.svc.cluster.local":        {            "username": "admin",            "password": "Harbor12345",            "auth": "YWRtaW46SGFyYm9yMTIzNDU="        }    }}
   gitRepos: []
-  extraVolumeMounts: []
+  extraVolumeMounts:
+    - name: m2
+      hostPath: /root/.m2
+      mountPath: /root/.m2
+    - name: netease-repository
+      mountPath: /root/.m2/repository/com/netease
+    - name: docker-sock
+      hostPath: /var/run/docker.sock
+      mountPath: /var/run/docker.sock
 
