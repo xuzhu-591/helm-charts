@@ -114,6 +114,7 @@ horizon:
       record_build_info(){
         local BUILD_TYPE="$1"
         cat >$(workspaces.buildinfo.path)/build-type<<<"$BUILD_TYPE"
+        cat >$(results.base-image.path)<<<"BASE_IMAGE"
       }
 
       main(){
@@ -172,6 +173,7 @@ horizon:
       #!/bin/bash
       set -eE
 
+      export BASE_IMAGE="$(params.baseImage)"
       export TOKEN="$(params.token)"
       export APPLICATION="$(params.application)"
       export CLUSTER="$(params.cluster)"
@@ -247,6 +249,7 @@ horizon:
       log INFO "application: $APPLICATION"
       log INFO "cluster: $CLUSTER"
       log INFO "environment: $ENVIRONMENT"
+      log INFO "test: $BASE_IMAGE"
 
       # invoke horizon api
       do_http(){

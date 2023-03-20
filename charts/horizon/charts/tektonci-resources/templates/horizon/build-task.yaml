@@ -23,7 +23,8 @@ spec:
   workspaces:
     - name: buildinfo
   results:
-    - name: properties
+    - name: base-image
+      description: base image of deployment
   steps:
     - name: git
       workingDir: /workspace

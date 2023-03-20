@@ -20,6 +20,7 @@ spec:
     - name: pipelinerunID
     - name: requestID
     - name: template
+    - name: baseImage
   steps:
     - name: deploy
       image: {{ .Values.horizon.deployTask.image.deployStep }}
