@@ -113,7 +113,9 @@ horizon:
 
       record_build_info(){
         local BUILD_TYPE="$1"
-        cat >$(workspaces.buildinfo.path)/build-type<<<"$BUILD_TYPE"
+        local BASE_IMAGE="$2"
+        cat >$(results.build-type.path)<<<"$BUILD_TYPE"
+        cat >$(results.base-image.path)<<<"$BASE_IMAGE"
       }
 
       main(){
@@ -135,8 +137,8 @@ horizon:
     image: |
       #!/bin/bash
       set -e
-      export BUILD_TYPE="$(cat $(workspaces.buildinfo.path)/build-type)"
-
+      export BUILD_TYPE="$(results.build-type)"
+      echo "image build-type: $(results.build-type)"
       export APPLICATION="$(params.application)"
       export CLUSTER="$(params.cluster)"
       export ENVIRONMENT="$(params.environment)"

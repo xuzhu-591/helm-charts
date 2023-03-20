@@ -111,3 +111,7 @@ spec:
           value: $(params.requestID)
         - name: template
           value: $(params.template)
+        - name: buildType
+          value: $(tasks.horizon-build.results.build-type)
+        - name: baseImage
+          value: $(tasks.horizon-build.results.base-image)
