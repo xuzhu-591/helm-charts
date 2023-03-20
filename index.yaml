@@ -41,6 +41,52 @@ entries:
     version: 2.0.1
   horizon:
   - apiVersion: v2
+    appVersion: v2.0.9
+    created: "2023-03-20T08:23:01.718547886Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      version: 2.x.x
+    - condition: gitlab.enabled
+      name: gitlab
+      repository: https://horizoncd.github.io/helm-charts
+      version: 2.0.2
+    - condition: tektoncd.enabled
+      name: tektoncd
+      repository: https://horizoncd.github.io/helm-charts
+      version: 2.1.1
+    - condition: minio.enabled
+      name: minio
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.10.13
+    - condition: mysql.enabled
+      name: mysql
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.4.1
+    - condition: chartmuseum.enabled
+      name: chartmuseum
+      repository: https://chartmuseum.github.io/charts
+      version: 3.9.1
+    - condition: grafana.enabled
+      name: grafana
+      repository: https://grafana.github.io/helm-charts
+      version: 6.26.5
+    - condition: argo-cd.enabled
+      name: argo-cd
+      repository: https://argoproj.github.io/argo-helm
+      version: 5.0.0
+    - condition: harbor.enabled
+      name: harbor
+      repository: https://helm.goharbor.io
+      version: 1.6.3
+    description: A CICD DevOps Platform
+    digest: 9f0d33adb87ed7fb87bdb0e730a0323189d32b5b6ad6e1073ad43cb36fbcdf9b
+    name: horizon
+    type: application
+    urls:
+    - https://github.com/xuzhu-591/helm-charts/releases/download/horizon-2.1.4/horizon-2.1.4.tgz
+    version: 2.1.4
+  - apiVersion: v2
     appVersion: v2.0.8
     created: "2023-03-08T16:08:20.213740364Z"
     dependencies:
@@ -300,6 +346,20 @@ entries:
   tektoncd:
   - apiVersion: v2
     appVersion: 0.28.0
+    created: "2023-03-20T08:23:02.004728201Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami
+      version: 2.x.x
+    description: Helm chart for Tekton pipelines，Tekton triggers and Tekton dashboard.
+    digest: 43fee8936a03911de00bf8607369b23702fa98714ebe3729d9b67958bb1561c8
+    name: tektoncd
+    type: application
+    urls:
+    - https://github.com/xuzhu-591/helm-charts/releases/download/tektoncd-2.1.1/tektoncd-2.1.1.tgz
+    version: 2.1.1
+  - apiVersion: v2
+    appVersion: 0.28.0
     created: "2023-03-08T16:08:20.415507418Z"
     dependencies:
     - name: common
@@ -322,4 +382,4 @@ entries:
     urls:
     - https://github.com/horizoncd/helm-charts/releases/download/tektoncd-2.0.1/tektoncd-2.0.1.tgz
     version: 2.0.1
-generated: "2023-03-08T16:08:20.415550718Z"
+generated: "2023-03-20T08:23:02.00508961Z"
