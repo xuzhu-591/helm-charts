@@ -21,8 +21,9 @@ spec:
     - name: requestID
   workspaces:
     - name: buildinfo
-  results:
-    - name: properties
+{{- if .Values.horizon.buildTask.results -}}
+{{- include "tektonci.buildTaskResults" . | indent 2 }}
+{{- end }}
   steps:
     - name: git
       workingDir: /workspace

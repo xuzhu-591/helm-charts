@@ -34,3 +34,14 @@ define extraVolumeMounts
   {{- end }}
 {{- end }}
 {{- end }}
+
+{{/*
+define build task results
+*/}}
+{{- define "tektonci.buildTaskResults" }}
+results:
+{{- range .Values.horizon.buildTask.results }}
+  - name: {{ .name }}
+    description: {{ .description }}
+{{- end }}
+{{- end }}

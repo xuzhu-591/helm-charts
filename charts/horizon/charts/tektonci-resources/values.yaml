@@ -10,6 +10,7 @@ horizon:
       gitStep: 5m
       compileStep:
       imageStep: 60m
+    results: []
   deployTask:
     image:
       deployStep: horizoncd/base-bash:v1.0.0
