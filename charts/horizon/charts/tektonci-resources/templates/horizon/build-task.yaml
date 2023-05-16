@@ -20,6 +20,7 @@ spec:
     - name: pipelinerunID
     - name: requestID
     - name: template
+    - name: action
   workspaces:
     - name: buildinfo
   results:
