@@ -42,6 +42,8 @@ spec:
       description: requestID of this operation
     - name: template
       description: template of the application
+    - name: action
+      description: action the pipeline performs
   resourcetemplates:
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
@@ -84,6 +86,8 @@ spec:
             value: $(tt.params.requestID)
           - name: template
             value: $(tt.params.template)
+          - name: action
+            value: $(tt.params.action)
         workspaces:
           - name: buildinfo
             emptyDir: {}
