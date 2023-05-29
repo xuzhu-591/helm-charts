@@ -10,6 +10,11 @@ horizon:
       gitStep: 5m
       compileStep:
       imageStep: 60m
+  checkTask:
+    image:
+      checkStep: horizoncd/base-bash:v1.0.0
+    timeout:
+      checkStep: 2m
   deployTask:
     image:
       deployStep: horizoncd/base-bash:v1.0.0
@@ -167,6 +172,9 @@ horizon:
         time podman rmi $DOCKER_IMAGE"
       eval "$CMD_BUILD" && eval "$CMD_PUSH" && exit 0
       exit 1
+    check: |
+      # todo: check image
+      echo "check image"
     deploy: |
       #!/bin/bash
       set -eE
