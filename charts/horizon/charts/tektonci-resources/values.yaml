@@ -10,11 +10,17 @@ horizon:
       gitStep: 5m
       compileStep:
       imageStep: 60m
+    whenExpression:
+      - input: "$(params.action)"
+        operator: in
+        values:
+          - "builddeploy"
   checkTask:
     image:
       checkStep: horizoncd/base-bash:v1.1.0
     timeout:
       checkStep: 2m
+    whenExpression: []
   deployTask:
     image:
       deployStep: horizoncd/base-bash:v1.0.0
