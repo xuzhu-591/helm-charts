@@ -53,7 +53,9 @@ horizon:
       export GIT_PULL_URL=""
 
       # config git ssh
-      rm -rf /root/.ssh && ln -s /tekton/home/.ssh /root
+      if [ ! -d /root/.ssh ] && [ -d /tekton/home/.ssh ]; then
+        rm -rf /root/.ssh && ln -s /tekton/home/.ssh /root
+      fi
       if [ -f "/root/.ssh/config" ]; then
         echo -e 'Host *\n    StrictHostKeyChecking no' >> /root/.ssh/config
       fi
