@@ -10,11 +10,21 @@ horizon:
       gitStep: 5m
       compileStep:
       imageStep: 60m
+    whenExpression:
+      - input: "$(params.action)"
+        operator: in
+        values:
+          - "builddeploy"
   checkTask:
     image:
       checkStep: horizoncd/base-bash:v1.1.0
     timeout:
       checkStep: 2m
+    whenExpression:
+      - input: "$(params.imageURL)"
+        operator: notin
+        values:
+          - ""
   deployTask:
     image:
       deployStep: horizoncd/base-bash:v1.0.0
@@ -47,7 +57,9 @@ horizon:
       export GIT_PULL_URL=""
 
       # config git ssh
-      rm -rf /root/.ssh && ln -s /tekton/home/.ssh /root
+      if [ ! -d /root/.ssh ] && [ -d /tekton/home/.ssh ]; then
+        rm -rf /root/.ssh && ln -s /tekton/home/.ssh /root
+      fi
       if [ -f "/root/.ssh/config" ]; then
         echo -e 'Host *\n    StrictHostKeyChecking no' >> /root/.ssh/config
       fi
